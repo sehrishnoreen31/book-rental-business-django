@@ -41,6 +41,14 @@ INSTALLED_APPS = [
 
     # my apps
     'authors',
+    'books',
+    'publishers',
+    'rentals',
+    'customers',
+
+
+    # third part apps
+    'django_countries',
 ]
 
 MIDDLEWARE = [
