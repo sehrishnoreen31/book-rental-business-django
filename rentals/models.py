@@ -2,13 +2,15 @@ from django.db import models
 from books.models import Book
 from customers.models import Customer
 from datetime import timedelta
-# Create your models here.
+
+# book status choices
 STATUS_CHOICES = (
     ('#0', 'rented'),
     ('#1', 'returned'),
     ('#0', 'lost'),
     ('#0', 'delayed'),
 )
+
 class Rental(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
