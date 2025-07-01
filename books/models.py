@@ -36,7 +36,7 @@ class BookTitle(models.Model):
 
 class Book(models.Model):
     title = models.ForeignKey(BookTitle, on_delete=models.CASCADE)
-    book_id = models.CharField(max_length=24, blank=True)
+    isbn = models.CharField(max_length=24, blank=True)
     qr_code = models.ImageField(upload_to='qr_codes', blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -57,7 +57,7 @@ class Book(models.Model):
                         box_size=10,
                         border=4,
                     )
-            qr.add_data(self.book_id)
+            qr.add_data(self.isbn)
             qr.make(fit=True)
             qr_code_img = qr.make_image(fill_color="black", back_color="white").convert('RGB')
             # give a name to image file
