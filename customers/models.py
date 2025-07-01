@@ -18,16 +18,17 @@ class Customer(models.Model):
     def save(self, *args, **kwargs):
         # if user does not enter a username
         if not self.username:
-            # creating username
+            # create username
             username = f'{self.first_name} {self.last_name}'
-            # checking if username already exists or not
+            # check if username already exists or not
             ex = __class__.objects.filter(username=username).exists() # can also use Customer.objects.filter here
             while ex:
                 post_fix = len(__class__.objects.filter(first_name=self.first_name, last_name=self.last_name))
-                # adding a post fix if username already exists
+                # add a post fix if username already exists
                 username = f"{self.first_name} {self.last_name} {post_fix+1}"
-                # re-assign ex, because this new username may also exist and run another loop
-                ex = __class__.objects.filter(username=username).exists() # can also use Customer.objects.filter here
+                # re-assign ex, because this new username may also exist; in this case, run another loop
+                ex = __class__.objects.filter(username=username).exists() 
+            # assign new created username 
             self.username = username
         else:
             # if user enters a username, slugify the username
