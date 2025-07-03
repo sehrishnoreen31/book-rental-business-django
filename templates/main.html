@@ -2,15 +2,58 @@
 {% block title %}Home{% endblock %}
 {% block content %}
     <h1>Home Page</h1>
-    <h2>Books in the store</h2>
-    
+    <h2>Books</h2>
     {% if books_list %}
         {% for book in books_list %}
             <ul>
-                <li>Title: {{book.title.title}}</li>
-                <li>Slug: {{book.title.slug}}</li>
-                <li>ISBN: {{book.isbn}}</li>
-                <li>Date Uploaded: {{book.created}}</li>
+                <li><b>Title:</b> {{book.title.title}}</li>
+                <li><b>Slug:</b> {{book.title.slug}}</li>
+                <li><b>ISBN:</b> {{book.isbn}}</li>
+                <li><b>Date Uploaded:</b> {{book.created}}</li>
+            </ul>
+        {% endfor %}
+    {% endif %}
+
+    <h2>Rentals</h2>
+    {% if rentals_list %}
+        {% for rental in rentals_list %}
+            <ul>
+                <li><b>Book:</b> {{rental.book}}</li>
+                <li><b>Customer:</b> {{rental.customer}}</li>
+                <li><b>Status:</b> {{rental.status}}</li>
+                <li><b>Start:</b> {{rental.rent_start_date}}</li>
+                <li><b>End:</b> {{rental.rent_end_date}}</li>
+            </ul>
+        {% endfor %}
+    {% endif %}
+
+    <h2>Customers</h2>
+    {% if customers_list %}
+        {% for customer in customers_list %}
+            <ul>
+                <li><b>First Name:</b> {{customer.first_name}}</li>
+                <li><b>Last Name:</b> {{customer.last_name}}</li>
+                <li><b>User Name:</b> {{customer.username}}</li>
+                <li><b>Rating:</b> {{customer.rating}}</li>
+            </ul>
+        {% endfor %}
+    {% endif %}
+
+    <h2>Authors</h2>
+    {% if authors_list %}
+        {% for author in authors_list %}
+            <ul>
+                <li><b>Author:</b> {{author.name}}</li>
+            </ul>
+        {% endfor %}
+    {% endif %}
+
+    <h2>Publishers</h2>
+    {% if publishers_list %}
+        {% for publisher in publishers_list %}
+            <ul>
+                <li><b>Publisher Name:</b> {{publisher.name}}</li>
+                <li><b>Publisher Country:</b> {{publisher.country}}</li>
             </ul>
         {% endfor %}
     {% endif %}
