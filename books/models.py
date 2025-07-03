@@ -46,9 +46,9 @@ class Book(models.Model):
 
     # overriding save method
     def save(self, *args, **kwargs):
-        if not self.book_id:
+        if not self.isbn:
             # enerating unique book id
-            self.book_id = str(uuid.uuid4()).replace("-", "")[:24].lower()
+            self.isbn = str(uuid.uuid4()).replace("-", "")[:24].lower()
 
             # generating book qr code image from book_id
             qr = qrcode.QRCode(

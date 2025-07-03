@@ -10,7 +10,7 @@ class Customer(models.Model):
     additional_info = models.TextField(blank=True)
     rating = models.PositiveSmallIntegerField(default=50)
     books = models.ManyToManyField(Book, blank=True)
-    book_count = models.PositiveSmallIntegerField(help_text="Number of currently rented books", default=0)
+    book_count = models.PositiveSmallIntegerField(help_text="Number of currently rented books by this customer", default=0)
 
     def __str__(self):
         return str(self.username)
