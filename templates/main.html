@@ -2,6 +2,7 @@
 {% block title %}Home{% endblock %}
 {% block content %}
     <h1>Home Page</h1>
+    {% comment %} books model {% endcomment %}
     <h2>Books</h2>
     {% if books_list %}
         {% for book in books_list %}
@@ -14,6 +15,7 @@
         {% endfor %}
     {% endif %}
 
+    {% comment %} rentals model {% endcomment %}
     <h2>Rentals</h2>
     {% if rentals_list %}
         {% for rental in rentals_list %}
@@ -27,6 +29,7 @@
         {% endfor %}
     {% endif %}
 
+    {% comment %} customers model {% endcomment %}
     <h2>Customers</h2>
     {% if customers_list %}
         {% for customer in customers_list %}
@@ -39,6 +42,7 @@
         {% endfor %}
     {% endif %}
 
+    {% comment %} authors model {% endcomment %}
     <h2>Authors</h2>
     {% if authors_list %}
         {% for author in authors_list %}
@@ -48,6 +52,7 @@
         {% endfor %}
     {% endif %}
 
+    {% comment %} publishers model {% endcomment %}
     <h2>Publishers</h2>
     {% if publishers_list %}
         {% for publisher in publishers_list %}
