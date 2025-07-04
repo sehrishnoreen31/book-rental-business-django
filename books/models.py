@@ -24,6 +24,10 @@ class BookTitle(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    # get books assiciated with a book title - reverse relationship
+    @property
+    def books(self):
+        return self.book_set.all()
 
     def __str__(self):
         return f"Book Position: {self.title}"

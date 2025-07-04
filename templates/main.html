@@ -8,6 +8,7 @@
         {% for book in books_list %}
             <ul>
                 <li><b>Title:</b> {{book.title.title}}</li>
+                <li><b>ID:</b> {{book.id}}</li>
                 <li><b>Slug:</b> {{book.title.slug}}</li>
                 <li><b>ISBN:</b> {{book.isbn}}</li>
                 <li><b>Date Uploaded:</b> {{book.created}}</li>
@@ -59,6 +60,17 @@
             <ul>
                 <li><b>Publisher Name:</b> {{publisher.name}}</li>
                 <li><b>Publisher Country:</b> {{publisher.country}}</li>
+            </ul>
+        {% endfor %}
+    {% endif %}
+
+    {% comment %} Reverse Relationship {% endcomment %}
+    <h2>Get Book with book title - Reverse Relationship</h2>
+    {% if reverse_book_booktitle %}
+        {% for rbook in reverse_book_booktitle %}
+            <ul>
+                <li><b>Book:</b> {{rbook.title}}</li>
+                <li><b>Book:</b> {{rbook.isbn}}</li>
             </ul>
         {% endfor %}
     {% endif %}

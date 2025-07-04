@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from books.models import Book
+from books.models import Book, BookTitle
 from rentals.models import Rental
 from customers.models import Customer
 from authors.models import Author
@@ -12,12 +12,18 @@ def home_view(request):
     customers_list = Customer.objects.all()
     authors_list = Author.objects.all()
     publishers_list = Pubisher.objects.all()
+
+    # reverse relationships
+    obj = BookTitle.objects.get(id=5)
+    books = obj.books
+
     context = {
         'books_list': books_list,
         'rentals_list': rentals_list,
         'customers_list': customers_list,
         'authors_list': authors_list,
         'publishers_list': publishers_list,
+        'reverse_book_booktitle': books
 
     }
     return render(request, 'main.html', context=context)
