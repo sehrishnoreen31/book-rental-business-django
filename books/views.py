@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import BookTitle, Book
-# Create your views here.
+
+
 def book_title_list_view(request):
     list_of_book_titles = BookTitle.objects.all()
     context = {
