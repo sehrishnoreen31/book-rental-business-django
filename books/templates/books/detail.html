@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}{{book_detail.title}} details{% endblock %}
+{% block content %}
+    
+    {% if book_detail %}
+        <ul>
+            <b>{{book_detail.title}}</b>
+            <li>Auther: {{book_detail.author}}</li>
+            <li>Publisher: {{book_detail.publisher}}</li>
+            <li>Created: {{book_detail.created}}</li>
+            <li>Updated: {{book_detail.updated}}</li>
+        </ul>
+    {% endif %}
+        
+{% endblock %}

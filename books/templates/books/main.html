@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Book Titles{% endblock %}
+{% block content %}
+    
+    {% if list_of_book_titles %}
+        <ul>
+            {% for book_title in list_of_book_titles %}
+                <li><a href="{% url 'books:detail' book_title.id %}">{{book_title.title}}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+        
+{% endblock %}
