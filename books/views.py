@@ -8,8 +8,9 @@ def book_title_list_view(request):
     }
     return render(request, 'books/main.html', context)
 
-def book_title_detail_view(request, id):
-    book_detail = BookTitle.objects.get(pk=id)
+def book_title_detail_view(request, **kwargs):
+    pk = kwargs.get('pk')
+    book_detail = BookTitle.objects.get(pk=pk)
     context = {
         'book_detail': book_detail
     }

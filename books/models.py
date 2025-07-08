@@ -31,7 +31,6 @@ class BookTitle(models.Model):
     
     def get_absolute_url(self):
         return reverse("books:detail", kwargs={"pk": self.pk})
-    
 
     def __str__(self):
         return f"Book Position: {self.title}"

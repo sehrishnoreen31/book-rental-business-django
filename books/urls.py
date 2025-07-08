@@ -5,5 +5,5 @@ app_name = 'books' # necessary for adding namespace in core:urls
 
 urlpatterns = [
     path('', book_title_list_view, name='main'),
-    path('<id>/', book_title_detail_view, name='detail'),
+    path('<pk>/', book_title_detail_view, name='detail'),
 ]
