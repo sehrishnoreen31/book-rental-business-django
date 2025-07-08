@@ -5,7 +5,7 @@
     {% if list_of_book_titles %}
         <ul>
             {% for book_title in list_of_book_titles %}
-                <li><a href="{% url 'books:detail' book_title.id %}">{{book_title.title}}</a></li>
+                <li><a href="{{books:detail}}">{{book_title.title}}</a></li>
             {% endfor %}
         </ul>
     {% endif %}
