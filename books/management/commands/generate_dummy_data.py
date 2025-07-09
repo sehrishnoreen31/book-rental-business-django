@@ -40,7 +40,7 @@ class Command(BaseCommand):
         for item in items:
             # check if title already exists
             if not BookTitle.objects.filter(title=item[0]).exists():
-                # get authors
+                # get authors, randomly order and select one
                 author = Author.objects.order_by('?').first()
                 # get publishers
                 publisher = Publisher.objects.get(name=item[1])
