@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 # related models
-from publishers.models import Pubisher
+from publishers.models import Publisher
 from authors.models import Author
 
 # for slugs
@@ -19,7 +19,7 @@ from django.core.files import File
 class BookTitle(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(blank=True)
-    publisher = models.ForeignKey(Pubisher, on_delete=models.CASCADE)
+    publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
     # on to many relationships
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)

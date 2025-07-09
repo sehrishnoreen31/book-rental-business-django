@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Pubisher
+from .models import Publisher
 # Register your models here.
-admin.site.register(Pubisher)
+admin.site.register(Publisher)
