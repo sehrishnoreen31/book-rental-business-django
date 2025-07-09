@@ -19,15 +19,15 @@ class Customer(models.Model):
         # if user does not enter a username
         if not self.username:
             # create username
-            username = f'{self.first_name} {self.last_name}'
+            base_username = f'{self.first_name} {self.last_name}'
+            base_slug = slugify(base_username)
+            username = base_slug
+
+            suffix = 1
             # check if username already exists or not
-            ex = __class__.objects.filter(username=username).exists() # can also use Customer.objects.filter here
-            while ex:
-                post_fix = len(__class__.objects.filter(first_name=self.first_name, last_name=self.last_name))
-                # add a post fix if username already exists
-                username = f"{self.first_name} {self.last_name} {post_fix+1}"
-                # re-assign ex, because this new username may also exist; in this case, run another loop
-                ex = __class__.objects.filter(username=username).exists() 
+            while Customer.objects.filter(username=username).exists():
+                username = f'{base_slug}-{suffix}'
+                suffix += 1
             # assign new created username 
             self.username = username
         else:
