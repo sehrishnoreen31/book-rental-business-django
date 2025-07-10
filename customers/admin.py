@@ -7,6 +7,7 @@ from import_export.fields import Field
 
 # resources
 class CustomerResource(resources.ModelResource):
+    # customize additional info and books data output
     additional_info = Field()
     books = Field()
     class Meta:
@@ -14,6 +15,7 @@ class CustomerResource(resources.ModelResource):
         fields = ('first_name', 'last_name', 'username', 'additional_info', 'rating', 'books', 'book_count')
         export_order = fields
 
+    # additional info column modifications
     def dehydrate_additional_info(self, obj):
         if len(obj.additional_info) == 0:
             return '-'
@@ -22,8 +24,9 @@ class CustomerResource(resources.ModelResource):
         else:
             # get first five characters of additional info
             txt_list = obj.additional_info.split(' ')[:5]
-            return ' '.join(txt_list)+'...'
+            return ' '.join(txt_list) + '...'
         
+    # books column modifications
     def dehydrate_books(self, obj):
         book = [x.isbn for x in obj.books.all()]
         return ', '.join(book)
