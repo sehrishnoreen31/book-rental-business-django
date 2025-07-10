@@ -1,6 +1,9 @@
 from django.db import models
 from books.models import Book
 from django.utils.text import slugify
+from django.db.models.signals import m2m_changed
+from django.dispatch import receiver
+
 
 # Create your models here.
 class Customer(models.Model):
@@ -33,6 +36,12 @@ class Customer(models.Model):
         else:
             # if user enters a username, slugify the username
             self.username = slugify(self.username)
+        self. book_count = self.books.count()
         super().save(*args, **kwargs)
 
+# update book count when a book is rented or returned
+@receiver(m2m_changed, sender=Customer.books.through)
+def update_book_count(sender, instance, **kwargs):
+    instance.book_count = instance.books.count()
+    instance.save(update_fields=['book_count'])
 
