@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     # third part apps
     'django_countries',
+    'import_export',
 ]
 
 MIDDLEWARE = [

@@ -14,7 +14,7 @@ def home_view(request):
     publishers_list = Publisher.objects.all()
 
     # reverse relationships
-    obj = BookTitle.objects.get(id=5)
+    obj = BookTitle.objects.get(id=11)
     books = obj.books
 
     context = {
