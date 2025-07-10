@@ -2,14 +2,7 @@ from django.db import models
 from books.models import Book
 from customers.models import Customer
 from datetime import timedelta
-
-# book status choices
-STATUS_CHOICES = (
-    ('#0', 'rented'),
-    ('#1', 'returned'),
-    ('#0', 'lost'),
-    ('#0', 'delayed'),
-)
+from .choices import STATUS_CHOICES
 
 class Rental(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
@@ -20,6 +13,9 @@ class Rental(models.Model):
     return_date = models.DateField(help_text='When book was actually returned', blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ('-created',)
 
     def __str__(self):
         return f'{self.book.title} rented by {self.customer.username}'

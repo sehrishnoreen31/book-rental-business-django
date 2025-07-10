@@ -3,6 +3,7 @@ from django.urls import reverse
 # related models
 from publishers.models import Publisher
 from authors.models import Author
+from rentals.choices import STATUS_CHOICES
 
 # for slugs
 from django.utils.text import slugify
@@ -50,6 +51,14 @@ class Book(models.Model):
 
     def __str__(self):
         return str(self.title)
+    
+    @property
+    def status(self):
+        # reverse relationship
+        if len(self.rental_set.all()) > 0:
+            statuses = dict(STATUS_CHOICES)
+            return statuses[self.rental_set.first().status]
+        return False
 
     # overriding save method
     def save(self, *args, **kwargs):
