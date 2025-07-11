@@ -7,7 +7,12 @@ from import_export.fields import Field
 
 # resources
 class PublisherResource(resources.ModelResource):
-    date_created = Field()
+    id = Field(attribute='id', column_name='ID')
+    name = Field(attribute='name', column_name='Name')
+    country = Field(attribute='country', column_name='Country')
+    created = Field(attribute='created', column_name='Created')
+    date_created = Field(attribute='created', column_name='Date_Created')
+    updated = Field(attribute='updated', column_name='Updated')
     class Meta:
         model = Publisher
         fields = ('id', 'name', 'country', 'created', 'date_created', 'updated')
