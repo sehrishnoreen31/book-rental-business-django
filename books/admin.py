@@ -7,13 +7,17 @@ from import_export.fields import Field
 
 # resources
 class BookResource(resources.ModelResource):
-    title = Field()
-    status = Field()
-    publisher = Field()
+    title = Field(attribute='title', column_name='Book_Title')
+    status = Field(attribute='status', column_name='Status')
+    publisher = Field(attribute='publisher', column_name='Publisher')
+    isbn = Field(attribute='isbn', column_name='ISBN')
+    qr_code = Field(attribute='qr_code', column_name='QR_Code')
+    created = Field(attribute='created', column_name='Date_Created')
+    updated = Field(attribute='updated', column_name='Date_Updated')
     
     class Meta:
         model = Book
-        fields = ('title', 'isbn', 'publisher', 'qr_code', 'status', 'qr_code', 'created', 'updated')
+        fields = ('title', 'isbn', 'publisher', 'qr_code', 'status', 'created', 'updated')
         export_order = fields
     
     # title
