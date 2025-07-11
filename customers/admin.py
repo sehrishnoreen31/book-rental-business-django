@@ -8,8 +8,14 @@ from import_export.fields import Field
 # resources
 class CustomerResource(resources.ModelResource):
     # customize additional info and books data output
-    additional_info = Field()
-    books = Field()
+    first_name = Field(attribute='first_name', column_name='First_Name')
+    last_name = Field(attribute='last_name', column_name='Last_Name')
+    username = Field(attribute='username', column_name='Username')
+    additional_info = Field(attribute='additional_info', column_name='Additional_Info')
+    rating = Field(attribute='rating', column_name='Rating')
+    books = Field(attribute='books', column_name='Books')
+    book_count = Field(attribute='book_count', column_name='Book_Count')
+    
     class Meta:
         model = Customer
         fields = ('first_name', 'last_name', 'username', 'additional_info', 'rating', 'books', 'book_count')
