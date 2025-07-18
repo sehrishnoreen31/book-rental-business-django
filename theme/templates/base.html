@@ -2,27 +2,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Django Tailwind</title>
     <meta charset="UTF-8">
+    <title>{% block title %}Dashboard{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% tailwind_css %}
 </head>
+<body>
 
-<body class="bg-gray-50 text-black dark:bg-gray-900 dark:text-white transition duration-300">
-    <div class="container mx-auto">
-        <section class="flex flex-col items-center justify-center h-screen gap-4">
-            <h1 class="text-5xl text-red-600 dark:text-yellow-400 transition">Django + Tailwind = ❤️</h1>
-            <button onclick="toggleDarkMode()" class="btn btn-primary">
-                Toggle Dark Mode
-            </button>
-        </section>
+<<!-- Navbar fixed -->
+{% include 'layout/navbar.html' %}
+
+<div class="drawer pt-16">
+    <input id="my-drawer" type="checkbox" class="drawer-toggle"/>
+
+    <div class="drawer-content flex">
+        <!-- Sidebar on large screens -->
+        <div class="hidden lg:block w-48 pt-16 h-screen fixed">
+            {% include 'layout/sidebar.html' %}
+        </div>
+
+        <!-- Main content with left margin -->
+        <div class="flex-1 p-6 lg:ml-48">
+            {% block content %}
+            <h1 class="text-3xl font-bold">Dashboard</h1>
+            {% endblock %}
+        </div>
     </div>
 
-    <script>
-        function toggleDarkMode() {
-            document.documentElement.classList.toggle('dark');
-        }
-    </script>
-</body>
+    <!-- Drawer Sidebar (for mobile) -->
+    {% include 'layout/sidebar.html' %}
+</div>
 
+
+
+</body>
 </html>
