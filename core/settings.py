@@ -48,7 +48,11 @@ INSTALLED_APPS = [
     # third part apps
     'django_countries',
     'import_export',
+    'tailwind',
+    'theme',
 ]
+NPM_BIN_PATH = r"D:\DevTools\Node\npm.cmd"
+TAILWIND_APP_NAME = 'theme'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
