@@ -7,33 +7,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% tailwind_css %}
 </head>
-<body>
+<body class="bg-gray-50 text-gray-900">
 
-<<!-- Navbar fixed -->
+<!-- Navbar (Full Width, Fixed) -->
 {% include 'layout/navbar.html' %}
 
-<div class="drawer pt-16">
-    <input id="my-drawer" type="checkbox" class="drawer-toggle"/>
+<!-- Mobile Sidebar Overlay -->
+{% include 'layout/mobile_sidebar.html' %}
 
-    <div class="drawer-content flex">
-        <!-- Sidebar on large screens -->
-        <div class="hidden lg:block w-48 pt-16 h-screen fixed">
-            {% include 'layout/sidebar.html' %}
-        </div>
+<!-- Page Content Wrapper -->
+<div class="max-w-[1600px] mx-auto pt-16 flex">
 
-        <!-- Main content with left margin -->
-        <div class="flex-1 p-6 lg:ml-48">
-            {% block content %}
-            <h1 class="text-3xl font-bold">Dashboard</h1>
-            {% endblock %}
-        </div>
-    </div>
+    <!-- Sidebar for Large Screens (Part of Flex Layout) -->
+    <aside class="hidden lg:block w-48 bg-red-700 text-white p-4 space-y-2 min-h-screen">
+        {% include 'layout/sidebar.html' %}
+    </aside>
 
-    <!-- Drawer Sidebar (for mobile) -->
-    {% include 'layout/sidebar.html' %}
+    <!-- Main Content Area -->
+    <main class="flex-1 p-6">
+        {% block content %}
+        <h1 class="text-3xl font-bold">Dashboard</h1>
+        {% endblock %}
+    </main>
+
 </div>
 
-
+<!-- Sidebar Toggle JS -->
+<script>
+    function openSidebar() {
+        document.getElementById('mobileSidebarOverlay').classList.remove('hidden');
+    }
+    function closeSidebar() {
+        document.getElementById('mobileSidebarOverlay').classList.add('hidden');
+    }
+</script>
 
 </body>
 </html>

@@ -1,19 +1,27 @@
-<nav class="navbar bg-base-100 shadow fixed top-0 left-0 w-full z-50">
-    <div class="flex-1">
-        <label for="my-drawer" class="btn btn-ghost btn-circle lg:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                 stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-        </label>
-        <a class="btn btn-ghost normal-case text-xl">MyApp</a>
-    </div>
-    <div class="flex-none hidden lg:block">
-        <ul class="menu menu-horizontal px-1">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
+<nav class="fixed top-0 left-0 w-full text-gray-100 z-50">
+    <div class="max-w-[1600px] bg-black mx-auto flex shadow-lg items-center justify-between px-4 h-16 max-w-[1400px]">
+        <!-- Left: Logo -->
+        <div>
+            <a href="#" class="text-2xl font-bold hover:text-red-400 transition">MyApp</a>
+        </div>
+
+        <!-- Right: Nav Links (hidden on mobile) -->
+        <div class="hidden lg:flex items-center space-x-6">
+            <a href="#" class="hover:text-red-400 text-xl hover:scale-110 text-white transition font-medium">Home</a>
+            <a href="#" class="hover:text-red-400 text-xl hover:scale-110 text-white transition font-medium">About</a>
+            <a href="#" class="hover:text-red-400 text-xl hover:scale-110 text-white transition font-medium">Services</a>
+            <a href="#" class="hover:text-red-400 text-xl hover:scale-110 text-white transition font-medium">Contact</a>
+        </div>
+
+        <!-- Mobile: Hamburger Icon -->
+        <div class="lg:hidden">
+            <button onclick="openSidebar()" class="p-2 rounded hover:bg-gray-100 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
     </div>
 </nav>

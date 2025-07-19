@@ -53,6 +53,7 @@ INSTALLED_APPS = [
 ]
 NPM_BIN_PATH = r"D:\DevTools\Node\npm.cmd"
 TAILWIND_APP_NAME = 'theme'
+INTERNAL_IPS = ['127.0.0.1']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
