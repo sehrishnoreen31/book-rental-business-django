@@ -1,13 +1,16 @@
 from django.shortcuts import render, get_object_or_404
 from .models import BookTitle, Book
+from django.views.generic import ListView
 
+# class based view
+class BookTitleView(ListView):
+    model = BookTitle
+    template_name = 'books/main.html'
+    context_object_name = 'list_of_book_titles'
 
-def book_title_list_view(request):
-    list_of_book_titles = BookTitle.objects.all()
-    context = {
-        'list_of_book_titles': list_of_book_titles
-    }
-    return render(request, 'books/main.html', context)
+    # overriding the get_queryset
+    def get_queryset(self):
+        return BookTitle.objects.all().order_by('-created')
 
 def book_title_detail_view(request, **kwargs):
     pk = kwargs.get('pk')
