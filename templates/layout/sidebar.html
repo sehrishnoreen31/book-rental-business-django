@@ -1,6 +1,7 @@
+{% url 'home_view' as path_to_home %}
+{% url 'books:main' as path_to_books %}
 <!-- Sidebar for Large Screens (Part of Flex Layout with Full Height) -->
 <aside class="hidden lg:block w-40 h-screen bg-red-700 text-white p-4 space-y-2">
-    <a href="#" class="block px-2 py-1 hover:text-gray-200 font-medium text-xl">Dashboard</a>
-    <a href="#" class="block px-2 py-1 hover:text-gray-200 font-medium text-xl">Profile</a>
-    <a href="#" class="block px-2 py-1 hover:text-gray-200 font-medium text-xl">Settings</a>
+    <a href="{{path_to_home}}" class="block px-2 py-1 hover:text-gray-200 font-medium text-xl">Dashboard</a>
+    <a href="{{path_to_books}}" class="block px-2 py-1 hover:text-gray-200 font-medium text-xl">Books</a>
 </aside>
