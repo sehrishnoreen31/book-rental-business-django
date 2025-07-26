@@ -1,12 +1,23 @@
 from django.shortcuts import render, get_object_or_404
 from .models import BookTitle, Book
-from django.views.generic import ListView
+from .forms import BookTitleForm
+from django.views.generic import ListView, FormView
 
 # class based view
-class BookTitleView(ListView):
+class BookTitleView(ListView, FormView):
     model = BookTitle
     template_name = 'books/main.html'
     context_object_name = 'list_of_book_titles'
+    form_class = BookTitleForm
+    
+    # overriding the get success url
+    def get_success_url(self):
+        return self.request.path
+    
+    # save form data to database
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
 
     # overriding the get_queryset
     def get_queryset(self):

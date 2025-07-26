@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 {% block title %}Book Titles{% endblock %}
 {% block content %}
-    
+    {% comment %} new book form {% endcomment %}
+    <p> Add new book <p>
+    <form action='' method='POST'>
+        {% csrf_token %}
+        {{form}}
+        <button type='submit'>Send</button>
+    </form>
+
+    {% comment %} display books {% endcomment %}
     {% if list_of_book_titles %}
         <ul>
             {% for book_title in list_of_book_titles %}
