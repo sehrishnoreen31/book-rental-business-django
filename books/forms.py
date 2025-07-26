@@ -5,4 +5,9 @@ class BookTitleForm(forms.ModelForm):
     class Meta:
         model = BookTitle
         fields = ('title', 'author', 'publisher')
-        
+    
+    # form validation 
+    def clean(self):
+        title = self.cleaned_data.get('title')
+        if len(title) < 5:
+            self.add_error('title', 'title is too short')

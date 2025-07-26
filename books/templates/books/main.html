@@ -2,18 +2,19 @@
 {% block title %}Book Titles{% endblock %}
 {% block content %}
     {% comment %} new book form {% endcomment %}
-    <p> Add new book <p>
+    <h1 class='text-2xl font-bold'> Add new book </h1>
     <form action='' method='POST'>
         {% csrf_token %}
         {{form}}
         <button type='submit'>Send</button>
     </form>
-
+    <br>
     {% comment %} display books {% endcomment %}
     {% if list_of_book_titles %}
+    <h2 class='text-xl font-bold'>Books</h2>
         <ul>
             {% for book_title in list_of_book_titles %}
-                <li><a href="{{book_title.get_absolute_url}}">{{book_title.title}}</a></li>
+                <li><a class='font-medium text-blue-800' href="{{book_title.get_absolute_url}}">{{book_title.title}}</a></li>
             {% endfor %}
         </ul>
     {% endif %}

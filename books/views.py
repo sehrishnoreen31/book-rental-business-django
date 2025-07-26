@@ -18,6 +18,11 @@ class BookTitleView(ListView, FormView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
+    
+    # form validation
+    def form_invalid(self, form):
+        self.object_list = self.get_queryset()
+        return super().form_invalid(form)
 
     # overriding the get_queryset
     def get_queryset(self):
