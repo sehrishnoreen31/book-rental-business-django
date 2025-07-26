@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'import_export',
     'tailwind',
     'theme',
+    'widget_tweaks',
 ]
 NPM_BIN_PATH = r"D:\DevTools\Node\npm.cmd"
 TAILWIND_APP_NAME = 'theme'
